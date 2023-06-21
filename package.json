@@ -1,0 +1,22 @@
+{
+  "name": "03-csv-peoject",
+  "version": "1.0.0",
+  "description": "this is a csv file project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" :"node index.js",
+    "dev" : "nodemon index.js"
+  },
+  "author": "yash",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^2.0.22"
+  }
+}

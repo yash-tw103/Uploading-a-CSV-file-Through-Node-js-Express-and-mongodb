@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><h2>Csv File Upload</h2></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          
+          
+        
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+    
+
+
+
+<center>
+  <br>
+
+ 
+
+<div class="card" style="width: 40rem;">
+  <div class="card-body">
+    <h2 class="alert alert-success text-center">Upload a CSV File</h2>
+    <hr style="border-top: 2px solid dashed;" >
+    <form action="/upload" method="POST" enctype="multipart/form-data" class="form-label">
+      <input type="file" name="csvfile" accept=".csv" required class="btn btn-success">
+
+    
+    <button class="btn btn-primary" type="submit">Upload</button>
+  </div>
+</div>
+</center>
+
+<br><br><br>
+
+
+
+<div class="col-sm-6 mt-5" style="margin: auto;">
+  <h2 class="alert alert-danger text-center">Uploaded Files</h2>
+  <table class="table table-striped table-hover text-center">
+      <thead>
+          <tr>
+              <th scope="col">No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Action</th>
+              
+          </tr>
+      </thead>
+      <tbody>
+          <% var i=1 %>
+          <% files.forEach((item)=>{ %>
+              <tr>
+                  <td><%= i++ %>.</td>
+                  <td><a style="list-style: none; text-transform: capitalize;" href="/file/<%= item._id %>"  ><%= item.originalname %></a></td>
+                  
+                  <td class="d-flex justify-content-center">
+                      
+                  <form action="/delete/<%= item._id %>" method="post">
+                      <button class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+                  </td>
+              </tr>
+
+         <% }) %>
+          
+      </tbody>
+  </table>
+</div>
+<br><br><br>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

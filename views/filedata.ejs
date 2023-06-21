@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <style>
+      table, th, td {
+        border: 1px solid;
+        text-align: center;
+      }
+      </style>
+</head>
+<body>
+
+    <h1>CSV File Data</h1>
+
+    <div>
+      <input type="text" id="searchInput" placeholder="Search...">
+      <button onclick="search()">Search</button>
+      <button onclick="resetSearch()">Reset</button>
+    </div>
+    
+    <center><table class="table">
+      <thead>
+        <tr>
+          <% Object.keys(fileData[0]).forEach((header) => { %>
+            <th><%= header %></th>
+          <% }); %>
+        </tr>
+      </thead>
+      <tbody>
+        <% fileData.forEach((row) => { %>
+          <tr>
+            <% Object.values(row).forEach((value) => { %>
+              <td><%= value %></td>
+            <% }); %>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table></center>
+    
+    <script>
+      function search() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.getElementsByTagName('tr');
+    
+        for (let i = 0; i < rows.length; i++) {
+          const rowData = rows[i].getElementsByTagName('td');
+          let found = false;
+    
+          for (let j = 0; j < rowData.length; j++) {
+            const cellValue = rowData[j].textContent.toLowerCase();
+    
+            if (cellValue.includes(input)) {
+              found = true;
+              break;
+            }
+          }
+    
+          rows[i].style.display = found ? '' : 'none';
+        }
+      }
+    
+      function resetSearch() {
+        const input = document.getElementById('searchInput');
+        input.value = '';
+        search();
+      }
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    
+
+</body>
+</html>
