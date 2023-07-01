@@ -1,7 +1,7 @@
 # Description
 Csv parser website  to upload your Csv files on the browser and view them.
 # Folder Structure
- #Config 
+ # Config 
  it consists of your Mongodb datbase connection files
 # Models
 Contains the Schema of our database
